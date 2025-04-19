@@ -125,3 +125,4 @@ SizeChange <- Size %>%
 
 ls()
 
+View(Data)
