@@ -1,7 +1,18 @@
+# INTRODUCTION
 This repository serves to showcase my capabilities in R coding and small to medium code management. The code originated from a project where some colleagues and I analyzed data from the pharmaceutical industry from Denmark and Germany, between 2009 and 2021, reporting a comparison and evaluation of their performance. While my colleagues provided me the data, I was in charge of gathering, cleaning, analyzing and visualizing the data, controlling the quality of the output that would be used in said project. These visualizations would be shared to every project member, along with an interactive map for better understanding and interaction.
 
-The data with which we assessed both industries contains information about their respective CPI's, number of employees, number of firms and their sizes, population, wages, and sales, all within the previously mentioned years. These data can be found inside the datasets inside the [Data folder](/Datasets/).
+# MATERIAL
+We compared and evaluated both industries using the information found in the following data can be found inside the datasets from the [Data folder](/Datasets/):
 
+- **DKDECPI**: Contains the CPI's levels for their respective countries
+- **DKDEEmployees**: Contains the number of pharma employees for their respective countries
+- **DKDEFirms**: Contains the number of pharma firms for their respective countries
+- **DKDEPopulation**: Contains the number of inhabitants for their respective countries
+- **DKDESize**: Contains the same number of  pharma firms, but categorized by the number of employees to determine their size, for their respective countries
+- **DKDEWage**: Contains the total annual salaries paid to pharma employees for their respective countries
+- **EUSales**: Contains the pharma sales per inhabitant for the majority of EU countries
+
+## General Code
 The cleaning, correction and visualization of the data was done in R Studio, but for the purpose of this repository, I will be using this markdown to demonstrate my abilities in R coding and data management. These first clumps of code can be found in the script [Data Collection Script.R](/Data%20Collection%20Script.R):
 
 These libraries were used in the project:
@@ -127,6 +138,8 @@ Size <- Size %>%
 
 This code outputs the Dataset "Data" (from here onwards, every empty cell is due to a missing value, which represented a limitation of our report):
 
+#### "Data" Dataset
+
 | Country | Year | CapitaTurnover | Population | CPI   | Turnover | Employees | Firms | Wage      | Inflation           |
 |---------|------|----------------|------------|-------|----------|-----------|-------|-----------|---------------------|
 | Denmark | 2009 |                | 5511451    | 91.2  |          | 17371     | 83    | 85277.74  |                     |
@@ -159,6 +172,7 @@ This code outputs the Dataset "Data" (from here onwards, every empty cell is due
 
 And the Dataset "Size" (Firms by Size was separated due to it including the variable "Size", since merging this data with the rest would've been be too troublesome when visualizing, both in a graph and in a table):
 
+#### "Size" Dataset
 | Country | Year | Size    | FirmsBySize |
 |---------|------|---------|-------------|
 | Denmark | 2009 | 0to9    | 57          |
@@ -201,7 +215,7 @@ DataChange <- Data %>%
   ungroup() %>%
   select(-CPI)
 ```
-
+## Code for Graphs
 The following code can be found in the script [Graph Script.R](Graph%20Script.R). The code contains the graph creation, and their respective output (graph in .jgp format and interactive graph in .html format). These graphs can be found in the ["Data" folder](/Data/):
 
 Wage and Change in Wage Graph:
