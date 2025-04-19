@@ -185,7 +185,7 @@ etc.
 
 
 
-We were not only interested in the values themselves, but also the annual changes between the data, which would bring a better understanding of their performances:
+We were not only interested in the values themselves, but also the annual % changes, especially for the values in "Data":
 
 ```r
 #Indexation
@@ -200,12 +200,6 @@ DataChange <- Data %>%
          ChangeinWage = round((Wage-lag(Wage))*100/lag(Wage),2)) %>%
   ungroup() %>%
   select(-CPI)
-
-SizeChange <- Size %>%
-  arrange(Size)%>%
-  group_by(Country) %>%
-  mutate(ChangeinFirmsBySize = round((FirmsBySize-lag(FirmsBySize))*100/lag(FirmsBySize),2),
-         ChangeinFirmsBySize = ifelse(is.infinite(ChangeinFirmsBySize), NA, ChangeinFirmsBySize))
 ```
 
 The following code can be found in the script [Graph Script.R](Graph%20Script.R). The code contains the graph creation, and their respective output (graph in .jgp format and interactive graph in .html format). These graphs can be found in the ["Data" folder](/Data/):
@@ -244,6 +238,7 @@ Output:
 ![](Data/Wage.jpg)
 [Interactive Graph](Data/Wage.html)
 
+Inflation Graph
 ```r
 #Graph Creation
 Graph2 <- DataChange %>%
@@ -276,6 +271,7 @@ Output:
 ![](Data/Inflation.jpg)
 [Interactive Graph](Data/Inflation.html)
 
+Firms, and Change in Firms Graph:
 ```r
 #Graph Creation
 Graph3 <- DataChange %>%
@@ -307,6 +303,8 @@ saveWidget(widget = IFirms,
 Output:
 ![](Data/Firms.jpg)
 [Interactive Graph](Data/Firms.html)
+
+Number of Employees and Change in Employees Graph:
 ```r
 #Graph Creation
 Graph4 <- DataChange %>%
@@ -339,6 +337,8 @@ saveWidget(widget = IEmployees,
 Output:
 ![](Data/Employees.jpg)
 [Interactive Graph](Data/Employees.html)
+
+Turnover and Change in Turnover Graph:
 ```r
 #Graph Creation
 Graph5 <- DataChange %>%
@@ -370,6 +370,8 @@ saveWidget(widget = ITurnover,
 Output:
 ![](Data/Turnover.jpg)
 [Interactive Graph](Data/Turnover.html)
+
+Turnover per Capita and Change in Turnover per Capita Graph:
 ```r
 #Graph Creation
 Graph6 <- DataChange %>%
@@ -401,6 +403,8 @@ saveWidget(widget = ICapitaTurnover,
 Output:
 ![](Data/CapitaTurnover.jpg)
 [Interactive Graph](Data/CapitaTurnover.html)
+
+Number of Firms per Country Graph:
 ```r
 #Graph Creation
 Graph7 <- Size %>%
@@ -427,31 +431,3 @@ saveWidget(widget = ISize1,
 Output:
 ![](Data/Size.jpg)
 [Interactive Graph](Data/Size1.html)
-```r
-#Graph Creation
-Graph8 <- SizeChange %>%
-  select(Country, Year, Size, ChangeinFirmsBySize) %>%
-  mutate(Year = as.numeric(Year))
-Size2 <- ggplot(Graph8, aes(x = Year, y = ChangeinFirmsBySize, color = Size, group = Size)) +
-  geom_line(linewidth = 0.2) +
-  geom_point() +
-  facet_wrap(~Country, nrow = 1, scales = "free_y") +
-  labs(title = "Change Firms by Size for Denmark and Germany in the Pharmaceutical Industry (09 - 21)",
-       x = "Year",
-       y = "Change in Number of Firms",
-       color = "Firm Size") +
-  theme_minimal() +
-  scale_x_continuous(breaks = unique(Graph8$Year))
-
-#Output
-ggsave("C:/Users/Usuario/Documents/2nD Desktop/BE Project/Data/SizeChange.jpg", 
-       plot = Size2,
-       width = 12, height = 8, dpi = 300)
-ISize2 <- ggplotly(Size2)
-saveWidget(widget = ISize2,
-           file = "C:/Users/Usuario/Documents/2nD Desktop/BE Project/Data/Size2.html",
-           selfcontained = TRUE)
-```
-Output:
-![](Data/SizeChange.jpg)
-[Interactive Graph](Data/Size2.html)

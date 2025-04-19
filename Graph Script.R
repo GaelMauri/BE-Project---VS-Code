@@ -123,21 +123,6 @@ Size1 <- ggplot(Graph7, aes(x = Year, y = FirmsBySize, fill = Size)) +
   scale_x_continuous(breaks = unique(Graph7$Year))
 
 
-Graph8 <- SizeChange %>%
-  select(Country, Year, Size, ChangeinFirmsBySize) %>%
-  mutate(Year = as.numeric(Year))
-Size2 <- ggplot(Graph8, aes(x = Year, y = ChangeinFirmsBySize, color = Size, group = Size)) +
-  geom_line(linewidth = 0.2) +
-  geom_point() +
-  facet_wrap(~Country, nrow = 1, scales = "free_y") +
-  labs(title = "Change Firms by Size for Denmark and Germany in the Pharmaceutical Industry (09 - 21)",
-       x = "Year",
-       y = "Change in Number of Firms",
-       color = "Firm Size") +
-  theme_minimal() +
-  scale_x_continuous(breaks = unique(Graph8$Year))
-
-
 #Graph and Interactive Graph Saving
 ggsave("C:/Users/Usuario/Documents/2nD Desktop/BE Project - VS Code/Data/Wage.jpg", 
        plot = Wage,
@@ -195,12 +180,5 @@ saveWidget(widget = ISize1,
            file = "C:/Users/Usuario/Documents/2nD Desktop/BE Project - VS Code/Data/Size1.html",
            selfcontained = TRUE)
 
-ggsave("C:/Users/Usuario/Documents/2nD Desktop/BE Project - VS Code/Data/SizeChange.jpg", 
-       plot = Size2,
-       width = 12, height = 8, dpi = 300)
-ISize2 <- ggplotly(Size2)
-saveWidget(widget = ISize2,
-           file = "C:/Users/Usuario/Documents/2nD Desktop/BE Project - VS Code/Data/Size2.html",
-           selfcontained = TRUE)
 
 

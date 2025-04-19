@@ -117,11 +117,6 @@ DataChange <- Data %>%
   ungroup() %>%
   select(-CPI)
 
-SizeChange <- Size %>%
-  arrange(Size)%>%
-  group_by(Country) %>%
-  mutate(ChangeinFirmsBySize = round((FirmsBySize-lag(FirmsBySize))*100/lag(FirmsBySize),2),
-         ChangeinFirmsBySize = ifelse(is.infinite(ChangeinFirmsBySize), NA, ChangeinFirmsBySize))
 
 ls()
 
