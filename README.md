@@ -2,18 +2,18 @@
 This repository serves to showcase my capabilities in R coding and small to medium code management. The code originated from a project where some colleagues and I analyzed data from the pharmaceutical industry from Denmark and Germany, between 2009 and 2021, reporting a comparison and evaluation of their performance. While my colleagues provided me the data, I was in charge of gathering, cleaning, analyzing and visualizing the data, controlling the quality of the output that would be used in said project. These visualizations would be shared to every project member, along with an interactive map for better understanding and interaction.
 
 ## Material
-We compared and evaluated both industries using the information found in the following data can be found inside the datasets from the [Data folder](/Datasets/):
+We compared and evaluated both industries using the information found in the following data, inside the datasets from the [Data folder](/Datasets/):
 
 - **DKDECPI**: Contains the CPI's levels for their respective countries
 - **DKDEEmployees**: Contains the number of pharma employees for their respective countries
 - **DKDEFirms**: Contains the number of pharma firms for their respective countries
 - **DKDEPopulation**: Contains the number of inhabitants for their respective countries
-- **DKDESize**: Contains the same number of  pharma firms, but categorized by the number of employees to determine their size, for their respective countries
+- **DKDESize**: Contains the same number of  pharma firms, categorized by the number of employees to determine their size, for their respective countries
 - **DKDEWage**: Contains the total annual salaries paid to pharma employees for their respective countries
 - **EUSales**: Contains the pharma sales per inhabitant for the majority of EU countries
 
 ## General Code
-The cleaning, correction and visualization of the data was done in R Studio, but for the purpose of this repository, I will be using this markdown to demonstrate my abilities in R coding and data management. These first clumps of code can be found in the script [Data Collection Script.R](/Data%20Collection%20Script.R):
+The cleaning, correction and visualization of the data was done in R Studio, but for the purpose of this repository, I will be using this markdown to present the code and data management. These first clumps of code can be found in the script [Data Collection Script.R](/Data%20Collection%20Script.R):
 
 These libraries were used in the project:
 ```r
@@ -34,7 +34,7 @@ install.packages(c(
   "here",          # Easy File Paths
   "readxl",        # Read Excel Files
   "plotly",        # Interactive Plots
-  "htmlwidgets",   # For Interactive Visualizations
+  "htmlwidgets"   # For Interactive Visualizations
 ))
 ```
 
@@ -254,7 +254,9 @@ Output:
 ![](Data/Wage.jpg)
 [Interactive Graph](Data/Wage.html)
 
-Inflation Graph
+---
+
+Inflation Graph:
 ```r
 #Graph Creation
 Graph2 <- DataChange %>%
@@ -286,6 +288,8 @@ saveWidget(widget = IInflation,
 Output:
 ![](Data/Inflation.jpg)
 [Interactive Graph](Data/Inflation.html)
+
+---
 
 Firms, and Change in Firms Graph:
 ```r
@@ -319,6 +323,8 @@ saveWidget(widget = IFirms,
 Output:
 ![](Data/Firms.jpg)
 [Interactive Graph](Data/Firms.html)
+
+---
 
 Number of Employees and Change in Employees Graph:
 ```r
@@ -354,6 +360,8 @@ Output:
 ![](Data/Employees.jpg)
 [Interactive Graph](Data/Employees.html)
 
+---
+
 Turnover and Change in Turnover Graph:
 ```r
 #Graph Creation
@@ -387,6 +395,8 @@ Output:
 ![](Data/Turnover.jpg)
 [Interactive Graph](Data/Turnover.html)
 
+---
+
 Turnover per Capita and Change in Turnover per Capita Graph:
 ```r
 #Graph Creation
@@ -419,6 +429,8 @@ saveWidget(widget = ICapitaTurnover,
 Output:
 ![](Data/CapitaTurnover.jpg)
 [Interactive Graph](Data/CapitaTurnover.html)
+
+---
 
 Number of Firms per Country Graph:
 ```r

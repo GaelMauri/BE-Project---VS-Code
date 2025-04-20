@@ -1,19 +1,12 @@
 
 #Library Loading
-.libPaths("C:/Users/Usuario/AppData/Local/R/win-library/4.2")
 library(wooldridge) 
 library(fixest)
 library(tidyverse)
 library(here)
-library(dplyr)
 library(readxl)
-library(tidyr)
-library(ggplot2)
-library(writexl)
-library(plotly)
+library(plotply)
 library(htmlwidgets)
-library(languageserver)
-library(ViewPipeSteps)
 
 #Dataset Loading
 Sales <- read_excel("Datasets/EUSales.xlsx")
@@ -79,6 +72,7 @@ Turnover <- merge(Turnover, CPI, by = c("Country", "Year"), all= TRUE)
 Turnover$Turnover <- round((Turnover$CapitaTurnover*100/Turnover$CPI * Turnover$Population)/1000000000, 2) 
 Turnover$CapitaTurnover <- round(Turnover$CapitaTurnover*100/Turnover$CPI, 2)
 
+#Data Merge
 Data <- merge(Turnover, Employees, by = c("Country", "Year"), all= TRUE)
 Data <- merge(Data, Firms, by = c("Country", "Year"), all= TRUE)
 Data <- merge(Data, Wage, by = c("Country", "Year"), all= TRUE)
@@ -117,7 +111,3 @@ DataChange <- Data %>%
   ungroup() %>%
   select(-CPI)
 
-
-ls()
-
-View(Data)
