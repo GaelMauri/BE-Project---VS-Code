@@ -1,7 +1,7 @@
 # INTRODUCTION
 This repository serves to showcase my capabilities in R coding and small to medium code management. The code originated from a project where some colleagues and I analyzed data from the pharmaceutical industry from Denmark and Germany, between 2009 and 2021, reporting a comparison and evaluation of their performance. While my colleagues provided me the data, I was in charge of gathering, cleaning, analyzing and visualizing the data, controlling the quality of the output that would be used in said project. These visualizations would be shared to every project member, along with an interactive map for better understanding and interaction.
 
-# MATERIAL
+## Material
 We compared and evaluated both industries using the information found in the following data can be found inside the datasets from the [Data folder](/Datasets/):
 
 - **DKDECPI**: Contains the CPI's levels for their respective countries
@@ -217,6 +217,8 @@ DataChange <- Data %>%
 ```
 ## Code for Graphs
 The following code can be found in the script [Graph Script.R](Graph%20Script.R). The code contains the graph creation, and their respective output (graph in .jgp format and interactive graph in .html format). These graphs can be found in the ["Data" folder](/Data/):
+
+**Since Github doesn't support .html files larger than 1MB, the links for the interactive graphs sends to the location of the file in the repository, where one can download and run locally**
 
 Wage and Change in Wage Graph:
 ```r
